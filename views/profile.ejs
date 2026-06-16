@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/profile.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg-blur one"></div>
+    <div class="bg-blur two"></div>
+    <div class="container">
+        <h2>Hello <%= user.name %></h2>
+        <form action="/post" method="post">
+            <textarea name="content" id="tArea"></textarea>
+            <input type="submit" value="Create Post">
+        </form>
+        <h4>All posts</h4>
+        <div class="card">
+            <% user.posts.reverse().forEach(function(post){ %>
+                <div class="posts">
+                    <p> <%= post.content %> </p>
+                    <small> <%= post.likes.length %> likes</small>
+                    <div class="btns">
+                        <a href="/like/<%= post._id %>" class="like-btn"> <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike" %> </a>
+                        <a href="/edit/<%= post._id %>" class="edit-btn">Edit</a>
+                        <a href="/delete/<%= post._id %>" class="delete-btn">Delete</a>
+                    </div>
+                </div>
+                
+                
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>

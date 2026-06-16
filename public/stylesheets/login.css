@@ -1,0 +1,158 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #0f172a,
+        #1e293b,
+        #111827
+    );
+
+    background-size:300% 300%;
+    animation:gradientMove 10s ease infinite;
+    overflow:hidden;
+}
+
+@keyframes gradientMove{
+    0%{
+        background-position:left;
+    }
+    50%{
+        background-position:right;
+    }
+    100%{
+        background-position:left;
+    }
+}
+
+.login-container{
+    width:400px;
+    padding:40px;
+
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+
+    color:white;
+    text-align:center;
+
+    animation:fadeIn .8s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.login-container h1{
+    margin-bottom:10px;
+    font-size:2rem;
+
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #818cf8,
+        #c084fc
+    );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.login-container p{
+    color:#cbd5e1;
+    margin-bottom:30px;
+}
+
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+form input[type="email"],
+form input[type="password"]{
+    padding:14px;
+    border:none;
+    outline:none;
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.08);
+    color:white;
+
+    transition:.3s ease;
+}
+
+form input[type="email"]::placeholder,
+form input[type="password"]::placeholder{
+    color:rgba(255,255,255,.5);
+}
+
+form input[type="email"]:focus,
+form input[type="password"]:focus{
+    box-shadow:0 0 15px rgba(59,130,246,.5);
+    transform:scale(1.02);
+}
+
+form input[type="submit"]{
+    padding:14px;
+    border:none;
+    border-radius:12px;
+
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #3b82f6
+    );
+
+    color:white;
+    font-size:1rem;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:.3s ease;
+}
+
+form input[type="submit"]:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 20px rgba(37,99,235,.4);
+}
+
+.bg-blur{
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.one{
+    background:#2563eb;
+    top:-120px;
+    left:-120px;
+}
+
+.two{
+    background:#7c3aed;
+    bottom:-120px;
+    right:-120px;
+}

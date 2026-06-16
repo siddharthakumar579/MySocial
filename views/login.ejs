@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/login.css">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="bg-blur one"></div>
+    <div class="bg-blur two"></div>
+
+    <div class="login-container">
+        <h1>Welcome Back 👋</h1>
+        <p>Login to continue</p>
+
+        <form action="/login" method="post">
+            <input
+                type="email"
+                placeholder="Enter your email"
+                name="email"
+                required
+            >
+
+            <input
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                required
+            >
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+</body>
+</html>

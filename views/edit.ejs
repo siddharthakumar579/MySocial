@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../stylesheets/edit.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="bg-blur one"></div>
+    <div class="bg-blur two"></div>
+    <div class="container">
+        <h2>Update your Post</h2>
+        <p>Last edited:
+            <%= post.date.toLocaleString('en-IN', {
+                timeZone: 'Asia/Kolkata',
+                weekday: 'long',
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: true
+            }) %> 
+        </p>
+
+        <form action="/update/<%= post._id %>" method="post">
+            <textarea name="content" id="tArea"><%= post.content %></textarea>
+            <input type="submit" name="submitbtn" id="submit-btn" value="Update Post">
+        </form>
+    </div>
+</body>
+</html>
