@@ -17,10 +17,12 @@ app.set('view engine', 'ejs');
 app.use(cookieParser())
 
 app.get('/', (req, res) =>{
+    res.cookie('token', '')
     res.render('index')
 });
 
 app.get('/login', (req, res) =>{
+    res.cookie('token', '')
     res.render('login')
 });
 
@@ -136,9 +138,10 @@ app.post('/create', async (req, res) =>{
             })
             let token = jwt.sign({email, userid: createdUser._id}, 'notSoSecret')
             res.cookie('token', token);
-            res.send('user created')
+            res.redirect('/profile')
         })
     })
-});
 
+    // res.redirect('/profile')
+});
 app.listen(3000);

@@ -10,6 +10,7 @@ body{
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:20px;
 
     background:linear-gradient(
         135deg,
@@ -36,12 +37,12 @@ body{
 }
 
 body > div:not(.bg-blur){
-    width:420px;
+    width:450px;
 
-    background:rgba(255,255,255,0.05);
+    background:rgba(255,255,255,.05);
     backdrop-filter:blur(15px);
 
-    border:1px solid rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,.1);
     border-radius:20px;
 
     padding:40px;
@@ -60,27 +61,47 @@ body > div:not(.bg-blur){
     }
 }
 
+h1{
+    text-align:center;
+    margin-bottom:10px;
+    font-size:2rem;
+
+    background:linear-gradient(
+        90deg,
+        #60a5fa,
+        #818cf8,
+        #c084fc
+    );
+
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
 form{
     display:flex;
     flex-direction:column;
     gap:16px;
+    margin-top:30px;
 }
 
 input{
     padding:14px;
+
     border:none;
     outline:none;
     border-radius:12px;
 
-    background:rgba(255,255,255,0.08);
+    background:rgba(255,255,255,.08);
     color:white;
+
     font-size:15px;
 
     transition:.3s ease;
 }
 
 input::placeholder{
-    color:rgba(255,255,255,0.55);
+    color:rgba(255,255,255,.5);
 }
 
 input:focus{
@@ -89,6 +110,8 @@ input:focus{
 }
 
 input[type="submit"]{
+    margin-top:5px;
+
     background:linear-gradient(
         135deg,
         #2563eb,
@@ -102,15 +125,37 @@ input[type="submit"]{
 
 input[type="submit"]:hover{
     transform:translateY(-3px);
-    box-shadow:0 10px 20px rgba(37,99,235,.4);
+
+    box-shadow:0 10px 20px rgba(37,99,235,.35);
+}
+
+p{
+    margin-top:25px;
+    text-align:center;
+    color:#cbd5e1;
+}
+
+p a{
+    text-decoration:none;
+    color:#60a5fa;
+    font-weight:600;
+    transition:.3s;
+}
+
+p a:hover{
+    color:#93c5fd;
+    text-decoration:underline;
 }
 
 .bg-blur{
-    position:absolute;
+    position:fixed;
+
     width:350px;
     height:350px;
+
     border-radius:50%;
     filter:blur(120px);
+
     z-index:-1;
 }
 
@@ -127,8 +172,13 @@ input[type="submit"]:hover{
 }
 
 @media(max-width:500px){
+
     body > div:not(.bg-blur){
-        width:90%;
+        width:100%;
         padding:30px 20px;
+    }
+
+    h1{
+        font-size:1.7rem;
     }
 }

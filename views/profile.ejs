@@ -10,12 +10,21 @@
     <div class="bg-blur one"></div>
     <div class="bg-blur two"></div>
     <div class="container">
-        <h2>Hello <%= user.name %></h2>
+
+        <div class="top-bar">
+            <h2>Hello <%= user.name %></h2>
+            <div class="logoutBtn">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+
         <form action="/post" method="post">
             <textarea name="content" id="tArea"></textarea>
             <input type="submit" value="Create Post">
         </form>
+
         <h4>All posts</h4>
+
         <div class="card">
             <% user.posts.reverse().forEach(function(post){ %>
                 <div class="posts">
@@ -27,7 +36,6 @@
                         <a href="/delete/<%= post._id %>" class="delete-btn">Delete</a>
                     </div>
                 </div>
-                
                 
             <% }) %>
         </div>
