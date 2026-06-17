@@ -1,3 +1,6 @@
+require("dotenv").config();
+
+const PORT = process.env.PORT || 3000;
 const cookieParser = require('cookie-parser');
 const express = require('express')
 const app = express();
@@ -42,7 +45,8 @@ app.post('/login', async (req, res) =>{
 
         if(result) {
 
-            let token = jwt.sign({email, userid: user._id}, 'notSoSecret');
+            let token = jwt.sign({email, userid: user._id}, process.env.JWT_SECRET);
+            console.log(process.env.JWT_SECRET);
             res.cookie('token', token);
 
             return res.status(200).redirect('/profile');
@@ -57,10 +61,8 @@ function isLoggedIn(req, res, next) {
     }
     else{
         // console.log(req.cookies.token);
-        
-        let data = jwt.verify(req.cookies.token, 'notSoSecret');
+        let data = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
         // console.log(data);
-        
         req.user = data
         next();
     } 
@@ -105,8 +107,6 @@ app.get('/delete/:id', isLoggedIn, async (req,res) =>{
     res.redirect('/profile')
 })
 
-
-
 app.post('/post', isLoggedIn, async (req, res) =>{
 
     let user = await userModel.findOne({email:req.user.email})
@@ -136,7 +136,7 @@ app.post('/create', async (req, res) =>{
                 age,
                 password:hash,
             })
-            let token = jwt.sign({email, userid: createdUser._id}, 'notSoSecret')
+            let token = jwt.sign({email, userid: createdUser._id}, process.env.JWT_SECRET)
             res.cookie('token', token);
             res.redirect('/profile')
         })
@@ -144,4 +144,7 @@ app.post('/create', async (req, res) =>{
 
     // res.redirect('/profile')
 });
-app.listen(3000);
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
