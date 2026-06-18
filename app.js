@@ -20,6 +20,7 @@ app.set('view engine', 'ejs');
 app.use(cookieParser())
 
 app.get('/', (req, res) =>{
+
     res.cookie('token', '')
     res.render('index')
 });
