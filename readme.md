@@ -1,0 +1,1 @@
+A full-stack social networking application developed with Node.js, Express.js, MongoDB, Mongoose, JWT authentication, and EJS. Users can securely register, log in, create posts, edit/delete their content, and like or unlike posts through an intuitive interface.
